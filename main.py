@@ -66,10 +66,12 @@ def gauss_mutation(sigma):
 
 # Choice 0 mutation
 def choice_zero():
-    def zero(t, genotype, sk, T, b):
+    def zero(t, genotype, sk, T, b, prob_mutation):
         def delta(t, y):
             return y * random.random() * (1 - (t / T)) ** b
-        genotype[0] = delta(t = t, y = sk - genotype[0])
+        for i in range(len(genotype)):
+            if random.random() < prob_mutation:
+                genotype[i] = delta(t = t, y = sk - genotype[i])
         return genotype
     return zero
 
