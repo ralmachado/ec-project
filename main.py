@@ -64,6 +64,16 @@ def gauss_mutation(sigma):
     return _gauss_mutation
 
 
+# Choice 0 mutation
+def choice_zero():
+    def zero(t, genotype, sk, T, b):
+        def delta(t, y):
+            return y * random.random() * (1 - (t / T)) ** b
+        genotype[0] = delta(t = t, y = sk - genotype[0])
+        return genotype
+    return zero
+
+
 # Tournament Selection
 def tour_sel(t_size):
     def tournament(pop, maximisation: bool = False):
@@ -101,7 +111,8 @@ if __name__ == '__main__':
         "prob_mutation": 0.05,
         "prob_crossover": 0.7,
         "crossover_fn": arithmetical_crossover(alpha=0.2),
-        "mutation_fn": gauss_mutation(sigma=0.2),
+        #"mutation_fn": gauss_mutation(sigma=0.2),
+        "mutation_fn": choice_zero(),
         "parents_fn": tour_sel(3),
         "survivors_fn": sel_survivors_elite(0.1),
         "fitness_fn": optimization.rastrigin,
