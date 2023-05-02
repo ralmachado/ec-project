@@ -59,7 +59,6 @@ class Evolution:
 
         # Mutation
         children = []
-        print(self.domain)
         for genotype, _ in parents:
             #new_genotype = self.mutation_fn(genotype, self.prob_mutation, self.domain)
             new_genotype = self.mutation_fn(self.gen, genotype, 10, self.max_gen, 0.1, self.prob_mutation)

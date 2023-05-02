@@ -71,7 +71,10 @@ def choice_zero():
             return y * random.random() * (1 - (t / T)) ** b
         for i in range(len(genotype)):
             if random.random() < prob_mutation:
-                genotype[i] = delta(t = t, y = sk - genotype[i])
+                y = sk - genotype[i]
+                d = delta(t = t, y = y)
+                if d <= y:
+                    genotype[i] = d 
         return genotype
     return zero
 
