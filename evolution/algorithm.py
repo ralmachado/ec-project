@@ -60,7 +60,7 @@ class Evolution:
         # Mutation
         children = []
         for genotype, _ in parents:
-            new_genotype = self.mutation_fn(genotype, self.prob_mutation, self.domain)
+            new_genotype = self.mutation_fn(genotype, self.prob_mutation, self.domain, t=self.gen, T=self.max_gen)
             children.append([new_genotype, self.fitness_fn(new_genotype)])
         # Survivor selection
         self.population = self.survivors_fn(self.population, children, maximisation=self.maximisation)
