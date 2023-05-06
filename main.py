@@ -1,15 +1,22 @@
+import random
+from pathlib import Path
+
 import numpy as np
 import seaborn as sns
 from matplotlib import pyplot as plt
 from tqdm import trange
 
-from evolution import Evolution, optimization, mutation, selection, crossover
+from evolution import Evolution, optimization, mutation, selection, crossover, utils
 
 
 if __name__ == '__main__':
+    # Read seeds
+    seed_file = Path.cwd() / "seeds.txt"
+    seeds = utils.read_seeds(seed_file)
+
     # Problem and evolution parameters
-    runs = 1
-    dimensions = 10
+    runs = 30
+    dimensions = 50
     params = {
         "max_gen": 200,
         "population_size": 200,
@@ -30,6 +37,7 @@ if __name__ == '__main__':
 
     # Run the evolutionary algorithm
     for run in trange(runs):
+        random.seed(seeds[run])
         evolution = Evolution(**params)
         avg_by_gen[run, 0] = evolution.avg_fitness
         best_by_gen[run, 0] = evolution.best_fitness
@@ -38,8 +46,8 @@ if __name__ == '__main__':
             avg_by_gen[run, gen] = evolution.avg_fitness
             best_by_gen[run, gen] = evolution.best_fitness
 
-    overall_avg_by_gen = np.mean(avg_by_gen, axis=0)
-    overall_best_by_gen = np.mean(best_by_gen, axis=0)
+        overall_avg_by_gen = np.mean(avg_by_gen, axis=0)
+        overall_best_by_gen = np.mean(best_by_gen, axis=0)
 
     # Plot performance
     sns.set_theme()
