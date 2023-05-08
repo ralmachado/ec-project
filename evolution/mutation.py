@@ -15,7 +15,7 @@ def gauss_mutation(sigma):
                 genotype[i] += random.gauss(0, sigma)
                 if genotype[i] < domain[i][0]:
                     genotype[i] = domain[i][0]
-                if genotype[i] > domain[i][1]:
+                elif genotype[i] > domain[i][1]:
                     genotype[i] = domain[i][1]
         return genotype
 

@@ -21,9 +21,9 @@ def schwefel(indiv):
     """
     schwefel function
     domain = [-500; 500]
-    minimum at (420.9687,...,420.9687)
+    minimum 0 at x = (420.9687,...,420.9687)
     """
-    y = sum([-x * math.sin(math.sqrt(math.fabs(x))) for x in indiv])
+    y = 418.9829 * len(indiv) - sum([x * math.sin(math.sqrt(math.fabs(x))) for x in indiv])
     return y
 
 
