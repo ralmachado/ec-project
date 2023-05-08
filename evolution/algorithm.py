@@ -64,6 +64,7 @@ class Evolution:
             children.append([new_genotype, self.fitness_fn(new_genotype)])
         # Survivor selection
         self.population = self.survivors_fn(self.population, children, maximisation=self.maximisation)
+        self.population = [[x, self.fitness_fn(x)] for x, _ in self.population]
         return self.gen
 
     @property
