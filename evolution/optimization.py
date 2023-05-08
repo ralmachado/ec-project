@@ -33,5 +33,5 @@ def quartic(indiv):
     domain = [-1.28; 1.28]
     minimum 0 at x = 0
     """
-    y = sum([(i + 1) * x for i, x in enumerate(indiv)]) + uniform(0, 1)
+    y = sum([(i + 1) * (x ** 4) for i, x in enumerate(indiv)]) + uniform(0, 1)
     return y

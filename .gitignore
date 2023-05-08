@@ -1,3 +1,9 @@
+# Runs
+quartic/
+rastrigin/
+schwefel/
+tsp/
+
 # Byte-compiled / optimized / DLL files
 **/__pycache__/
 

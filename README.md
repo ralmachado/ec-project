@@ -34,3 +34,7 @@ Implement two versions of a standard evolutionary algorithm, one for each of the
 For each version of the algorithm, and each benchmark problem, do **thirty runs**.
 Store quality measures, like the performance at the end of the run.
 Do a statistical analysis of those measures and draw your conclusions.
+
+## Notes to report
+
+When using Random Keys with TSP, the domain doesn't affect the results, since the RNG is seeded the same, the resulting permutation is not affected, because the only difference is the resulting scale
