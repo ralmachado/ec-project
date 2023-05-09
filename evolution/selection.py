@@ -8,8 +8,9 @@ def tour_sel(t_size):
         size_pop = len(pop)
         mate_pool = []
         for i in range(size_pop):
-            winner = sorted(random.sample(pop, t_size), key=itemgetter(1), reverse=maximisation)[0]
-            mate_pool.append(winner)
+            pool = random.sample(pop, t_size)
+            pool.sort(key=itemgetter(1), reverse=maximisation)
+            mate_pool.append(pool[0])
         return mate_pool
 
     return tournament

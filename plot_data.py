@@ -2,8 +2,9 @@ from pathlib import Path
 import numpy as np
 from matplotlib import pyplot as plt
 
+
 if __name__ == '__main__':
-    path = Path.cwd() / "schwefel" / "gauss"
+    path = Path.cwd() / "schwefel" / "delta"
 
     filenames = []
     plt.subplots()
@@ -16,8 +17,8 @@ if __name__ == '__main__':
     plt.legend()
 
     for filename in filenames:
-        best = np.genfromtxt(path / f"{filename}_best.txt")
-        avg = np.genfromtxt(path / f"{filename}_avg.txt")
+        best = np.genfromtxt(path / f"{filename}_best.txt")[1000:]
+        avg = np.genfromtxt(path / f"{filename}_avg.txt")[1000:]
 
         fig, ax = plt.subplots()
         ax.plot(best, label="Best")

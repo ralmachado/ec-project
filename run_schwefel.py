@@ -5,7 +5,7 @@ import numpy as np
 from tqdm import trange
 
 from base_config import params
-from evolution import Evolution, utils, tsp, mutation, optimization
+from evolution import Evolution, utils, mutation, optimization
 
 if __name__ == '__main__':
     # Read seeds
@@ -29,8 +29,8 @@ if __name__ == '__main__':
 
     # Mutation parameter search values
     configs = {
-        "gauss": [2 ** i for i in range(-5, 6)],
-        "delta": [2 ** i for i in range(-5, 6)]
+        "gauss": [2 ** i for i in range(-5, 1)],
+        "delta": [2 ** i for i in range(0, 6)]
     }
 
     # Run the evolutionary algorithm
@@ -69,7 +69,6 @@ if __name__ == '__main__':
                     avg_by_gen[run, gen] = evolution.avg_fitness
                     best_by_gen[run, gen] = evolution.best_fitness
                 best_on_end[run] = evolution.best_fitness
-
             overall_avg_by_gen = np.mean(avg_by_gen, axis=0)
             overall_best_by_gen = np.mean(best_by_gen, axis=0)
             np.savetxt(best_file, overall_best_by_gen)
